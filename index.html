@@ -10,32 +10,49 @@
     <script>
 
       var GeneroIdentidade = "X";
-      var PosicaoIdentidade = "X"
+      var GeneroIdentidadeCompleto = "Pessoa";
+      var PosicaoIdentidade = "SW"
+      var PosicaoIdentidadeCompleto = "Switcher"
       var GeneroProcura = "X";
-      var PosicaoProcura = "X";
+      var GeneroProcuraCompleto = "Pessoa";
+      var PosicaoProcura = "SW";
+      var PosicaoProcuraCompleto = "Switcher";
       var Idade = 18;
       var Regiao = "Brasil";
-      var Descricao = "Descrição Resumida";
+      var Descricao = "novas experiências";
+
+      window.onload = UpdateTituloAnuncio;
 
       function UpdateTituloAnuncio(){
         var anuncio = `[${GeneroIdentidade}4${GeneroProcura}] [${PosicaoIdentidade}4${PosicaoProcura}] ${Idade} ${Regiao} - ${Descricao}`
-        document.getElementById("TituloAnuncio").innerHTML=anuncio;
+        document.getElementById("TituloAnuncio").innerHTML = anuncio;
+
+        UpdateDescricaoCompleta()
       }
 
-      function updateGeneroIdentidade(v){
+      function UpdateDescricaoCompleta(){
+        var anuncio = `Sou ${GeneroIdentidadeCompleto} ${PosicaoIdentidadeCompleto} e procuro ${GeneroProcuraCompleto} ${PosicaoProcuraCompleto}, tenho ${Idade} anos, moro na região de ${Regiao} e estou buscando ${Descricao}`
+        document.getElementById("ResumoAnuncio").innerHTML=anuncio;
+      }
+
+      function updateGeneroIdentidade(v,n){
         GeneroIdentidade = v;
+        GeneroIdentidadeCompleto = n;
         UpdateTituloAnuncio()
       }
-      function updatePosicaoIdentidade(v){
+      function updatePosicaoIdentidade(v,n){
         PosicaoIdentidade = v;
+        PosicaoIdentidadeCompleto = n;
         UpdateTituloAnuncio()
       }
-      function updateGeneroProcura(v){
+      function updateGeneroProcura(v,n){
         GeneroProcura = v;
+        GeneroProcuraCompleto = n;
         UpdateTituloAnuncio()
       }
-      function updatePosicaoProcura(v){
+      function updatePosicaoProcura(v,n){
         PosicaoProcura = v;
+        PosicaoProcuraCompleto = n;
         UpdateTituloAnuncio()
       }
       function updateIdade(v){
@@ -64,36 +81,38 @@
 
       <p class="text-center fs-2" id="TituloPagina">Ferramenta para criação de Anúncio no r/anunciosBDSM</p>
       
-      <p class="text-center fs-2" id="TituloAnuncio">[X4X] [X4X] 18 Brasil - Descrição Resumida</p>
+      <p class="text-center fs-2" id="TituloAnuncio"></p>
+      <p class="text-center fs-4">Sendo interpretado como</p>
+      <p class="text-center fs-3" id="ResumoAnuncio"></p>
 
       <p class="text-left fs-6" id="LabelGeneroIdentidade">Me identifico como</p>
       <div class="btn-group" role="group" aria-label="Identificação de Gênero">
-        <button type="button" class="btn btn-primary" onclick="updateGeneroIdentidade('H')">Homem</button>
-        <button type="button" class="btn btn-primary" onclick="updateGeneroIdentidade('M')">Mulher</button>
-        <button type="button" class="btn btn-primary" onclick="updateGeneroIdentidade('T')">Trans</button>
-        <button type="button" class="btn btn-primary" onclick="updateGeneroIdentidade('NB')">Não-Binário</button>
+        <button type="button" class="btn btn-primary" onclick="updateGeneroIdentidade('H',this.innerHTML)">Homem</button>
+        <button type="button" class="btn btn-primary" onclick="updateGeneroIdentidade('M',this.innerHTML)">Mulher</button>
+        <button type="button" class="btn btn-primary" onclick="updateGeneroIdentidade('T',this.innerHTML)">Trans</button>
+        <button type="button" class="btn btn-primary" onclick="updateGeneroIdentidade('NB',this.innerHTML)">Não-Binário</button>
       </div>
 
       <p class="text-left fs-6" id="LabelPosicaoIdentidade">No BDSM sou </p>
       <div class="btn-group" role="group" aria-label="Identificação de Posição no BDSM">
-        <button type="button" class="btn btn-primary" onclick="updatePosicaoIdentidade('T')">Top</button>
-        <button type="button" class="btn btn-primary" onclick="updatePosicaoIdentidade('B')">Bottom</button>
-        <button type="button" class="btn btn-primary" onclick="updatePosicaoIdentidade('SW')" >Switch</button>
+        <button type="button" class="btn btn-primary" onclick="updatePosicaoIdentidade('T',this.innerHTML)">Top</button>
+        <button type="button" class="btn btn-primary" onclick="updatePosicaoIdentidade('B',this.innerHTML)">Bottom</button>
+        <button type="button" class="btn btn-primary" onclick="updatePosicaoIdentidade('SW',this.innerHTML)" >Switcher</button>
       </div>
 
       <p class="text-left fs-6" id="LabelGeneroProcura">e estou procurando</p>
       <div class="btn-group" role="group" aria-label="Gênero que procura">
-      <button type="button" class="btn btn-primary" onclick="updateGeneroProcura('H')">Homem</button>
-      <button type="button" class="btn btn-primary" onclick="updateGeneroProcura('M')">Mulher</button>
-      <button type="button" class="btn btn-primary" onclick="updateGeneroProcura('T')">Trans</button>
-      <button type="button" class="btn btn-primary" onclick="updateGeneroProcura('NB')">Não-Binário</button>
+      <button type="button" class="btn btn-primary" onclick="updateGeneroProcura('H',this.innerHTML)">Homem</button>
+      <button type="button" class="btn btn-primary" onclick="updateGeneroProcura('M',this.innerHTML)">Mulher</button>
+      <button type="button" class="btn btn-primary" onclick="updateGeneroProcura('T',this.innerHTML)">Trans</button>
+      <button type="button" class="btn btn-primary" onclick="updateGeneroProcura('NB',this.innerHTML)">Não-Binário</button>
       </div>
 
       <p class="text-left fs-6" id="LabelPosicaoProcura">Com a posição </p>
       <div class="btn-group" role="group" aria-label="Posição no BDSM que procura">
-      <button type="button" class="btn btn-primary" onclick="updatePosicaoProcura('T')">Top</button>
-      <button type="button" class="btn btn-primary" onclick="updatePosicaoProcura('B')">Bottom</button>
-      <button type="button" class="btn btn-primary" onclick="updatePosicaoProcura('SW')" >Switch</button>
+      <button type="button" class="btn btn-primary" onclick="updatePosicaoProcura('T',this.innerHTML)">Top</button>
+      <button type="button" class="btn btn-primary" onclick="updatePosicaoProcura('B',this.innerHTML)">Bottom</button>
+      <button type="button" class="btn btn-primary" onclick="updatePosicaoProcura('SW',this.innerHTML)" >Switcher</button>
       </div>
       
       <div data-mdb-input-init class="form-outline">
@@ -107,7 +126,7 @@
       </div>
 
       <div class="mb-3">
-        <label for="inputTextDescricao" class="form-label">Descrição resumida:</label>
+        <label for="inputTextDescricao" class="form-label">Descrição resumida do que está buscando:</label>
         <input type="text" class="form-control" id="inputTextDescricao" aria-describedby="Descrição Resumida" oninput="updateDescricao(this.value)">
       </div>
 
