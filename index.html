@@ -52,6 +52,11 @@
         UpdateTituloAnuncio()
       }
 
+      function copy() {
+      var text = document.getElementById('TituloAnuncio').innerHTML;
+      navigator.clipboard.writeText(text);
+      }
+
     </script>
   </head>
   <body>
@@ -105,6 +110,8 @@
         <label for="inputTextDescricao" class="form-label">Descrição resumida:</label>
         <input type="text" class="form-control" id="inputTextDescricao" aria-describedby="Descrição Resumida" oninput="updateDescricao(this.value)">
       </div>
+
+      <button type="button" class="btn btn-primary" onclick="copy()">Copiar Título</button>
 
   </div>
 </body>
